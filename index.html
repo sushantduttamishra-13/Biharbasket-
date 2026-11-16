@@ -1,0 +1,531 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BiharBasket | Apna Bihar, Apna Swad</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --green: #244c38;
+  --orange: #d97732;
+  --cream: #fff8e9;
+  --dark: #172c21;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--cream);
+  color: var(--dark);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* INTRO ANIMATION */
+
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: introExit 1s ease 3.5s forwards;
+}
+
+.intro-logo {
+  font-family: 'Playfair Display', serif;
+  color: white;
+  font-size: 48px;
+  animation: logoZoom 1.5s ease forwards;
+}
+
+.intro-logo span {
+  color: #f5b45d;
+}
+
+.intro-tag {
+  color: #fce8c9;
+  margin-top: 12px;
+  letter-spacing: 3px;
+  font-size: 12px;
+  opacity: 0;
+  animation: fadeIn 1s ease 1s forwards;
+}
+
+.intro-line {
+  height: 2px;
+  width: 0;
+  background: #e8a04e;
+  margin-top: 25px;
+  animation: lineGrow 1s ease 1.5s forwards;
+}
+
+@keyframes logoZoom {
+  from { opacity: 0; transform: scale(.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes lineGrow {
+  to { width: 160px; }
+}
+
+@keyframes introExit {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* HEADER */
+
+header {
+  background: var(--green);
+  color: white;
+  padding: 17px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #f5b45d;
+}
+
+.cart {
+  border: 1px solid #ffffff55;
+  padding: 8px 14px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 450px;
+  padding: 70px 7%;
+  background: linear-gradient(110deg,#244c38,#315d43);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 550px;
+  animation: slideUp 1s ease;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px,6vw,60px);
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: #f5b45d;
+}
+
+.hero p {
+  margin: 20px 0;
+  color: #e9e9d9;
+  line-height: 1.8;
+}
+
+.hero button {
+  background: var(--orange);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.hero button:hover {
+  transform: translateY(-4px);
+  background: #ef9149;
+}
+
+.hero-image {
+  font-size: clamp(100px,18vw,190px);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-18px) rotate(4deg); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTION */
+
+.section {
+  padding: 60px 7%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  color: var(--green);
+}
+
+.section-title p {
+  color: #777;
+  margin-top: 8px;
+}
+
+/* CATEGORY */
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 18px;
+}
+
+.category {
+  background: white;
+  border-radius: 18px;
+  padding: 25px 10px;
+  text-align: center;
+  box-shadow: 0 5px 20px #00000008;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.category:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px #244c3820;
+}
+
+.category .emoji {
+  font-size: 42px;
+}
+
+.category h3 {
+  margin-top: 10px;
+  color: var(--green);
+  font-size: 15px;
+}
+
+/* PRODUCTS */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 22px;
+}
+
+.product {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px #0000000b;
+  transition: .35s;
+}
+
+.product:hover {
+  transform: translateY(-8px);
+}
+
+.product-image {
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 85px;
+  background: #f5ead6;
+}
+
+.product-info {
+  padding: 18px;
+}
+
+.product-info h3 {
+  color: var(--green);
+  font-size: 18px;
+}
+
+.product-info p {
+  color: #777;
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+.price {
+  color: var(--orange);
+  font-weight: bold;
+  font-size: 19px;
+  margin: 12px 0;
+}
+
+.add-btn {
+  background: var(--green);
+  color: white;
+  width: 100%;
+  padding: 11px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.add-btn:hover {
+  background: var(--orange);
+}
+
+/* ABOUT */
+
+.about {
+  background: #eee5d2;
+  text-align: center;
+  padding: 60px 10%;
+}
+
+.about h2 {
+  font-family: 'Playfair Display',serif;
+  color: var(--green);
+  font-size: 32px;
+}
+
+.about p {
+  max-width: 650px;
+  margin: 18px auto;
+  line-height: 1.8;
+  color: #665d4f;
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 35px 15px;
+}
+
+footer p {
+  color: #ccc;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* CART POPUP */
+
+#cartPopup {
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  background: var(--green);
+  color: white;
+  padding: 15px 22px;
+  border-radius: 15px;
+  display: none;
+  z-index: 200;
+  box-shadow: 0 5px 20px #0003;
+}
+
+@media(max-width:700px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 65px 7%;
+  }
+
+  .categories {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .products {
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+  }
+
+  .product-image {
+    height: 130px;
+    font-size: 65px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-info h3 {
+    font-size: 15px;
+  }
+
+  .section {
+    padding: 45px 5%;
+  }
+}
+
+@media(max-width:370px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style></head><body><!-- INTRO --><div id="intro">
+  <div class="intro-logo">Bihar<span>Basket</span></div>
+  <div class="intro-tag">APNA BIHAR, APNA SWAD</div>
+  <div class="intro-line"></div>
+</div><!-- HEADER --><header>
+  <div class="logo">Bihar<span>Basket.</span></div>
+  <div class="cart" onclick="showCart()">
+    🛒 Cart (<span id="cartCount">0</span>)
+  </div>
+</header><!-- HERO --><section class="hero">
+  <div class="hero-content">
+    <h1>Discover the <span>Real Taste</span> of Bihar.</h1><p>
+  From traditional Thekua to delicious Makhana.
+  Experience the authentic flavours and traditions of Bihar.
+</p>
+
+<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+  Explore Products →
+</button>
+
+  </div>  <div class="hero-image">🥮</div>
+</section><!-- CATEGORIES --><section class="section">  <div class="section-title">
+    <h2>Explore Categories</h2>
+    <p>Tradition packed with love.</p>
+  </div>  <div class="categories"><div class="category">
+  <div class="emoji">🥮</div>
+  <h3>Traditional Sweets</h3>
+</div>
+
+<div class="category">
+  <div class="emoji">🥜</div>
+  <h3>Makhana</h3>
+</div>
+
+<div class="category">
+  <div class="emoji">🌾</div>
+  <h3>Sattu</h3>
+</div>
+
+<div class="category">
+  <div class="emoji">🎨</div>
+  <h3>Handicrafts</h3>
+</div>
+
+  </div>
+</section><!-- PRODUCTS --><section class="section" id="products">  <div class="section-title">
+    <h2>Our Best Sellers</h2>
+    <p>A little taste of Bihar.</p>
+  </div>  <div class="products"><div class="product">
+  <div class="product-image">🥮</div>
+  <div class="product-info">
+    <h3>Traditional Thekua</h3>
+    <p>Authentic Bihari sweet.</p>
+    <div class="price">₹149 / 250g</div>
+    <button class="add-btn" onclick="addCart('Thekua',149)">
+      Add to Cart +
+    </button>
+  </div>
+</div>
+
+<div class="product">
+  <div class="product-image">🥜</div>
+  <div class="product-info">
+    <h3>Premium Makhana</h3>
+    <p>Crunchy fox nuts.</p>
+    <div class="price">₹199 / 250g</div>
+    <button class="add-btn" onclick="addCart('Makhana',199)">
+      Add to Cart +
+    </button>
+  </div>
+</div>
+
+<div class="product">
+  <div class="product-image">🌾</div>
+  <div class="product-info">
+    <h3>Pure Sattu</h3>
+    <p>Traditional roasted gram flour.</p>
+    <div class="price">₹99 / 500g</div>
+    <button class="add-btn" onclick="addCart('Sattu',99)">
+      Add to Cart +
+    </button>
+  </div>
+</div>
+
+  </div>
+</section><!-- ABOUT --><section class="about">
+  <h2>Rooted in Bihar ❤️</h2>
+  <p>
+    BiharBasket celebrates the rich culture, flavours and traditions
+    of Bihar. Our dream is to connect local artisans and producers
+    with customers across India.
+  </p>
+</section><!-- FOOTER --><footer>
+  <div class="logo">Bihar<span style="color:#f5b45d">Basket.</span></div>
+  <p>Apna Bihar, Apna Swad.</p>
+  <p>© 2026 BiharBasket. All rights reserved.</p>
+</footer><div id="cartPopup"></div><script>
+
+let cart = [];
+
+function addCart(name,price) {
+  cart.push({name,price});
+
+  document.getElementById('cartCount').innerText = cart.length;
+
+  let popup = document.getElementById('cartPopup');
+
+  popup.innerText = name + ' added to cart! ✓';
+  popup.style.display = 'block';
+
+  setTimeout(() => {
+    popup.style.display = 'none';
+  },2000);
+}
+
+function showCart() {
+
+  if(cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+
+  let total = cart.reduce((sum,item) => sum + item.price,0);
+
+  let items = cart.map(item => item.name + ' - ₹' + item.price).join('\n');
+
+  alert('YOUR BIHARBASKET CART\n\n' + items + '\n\nTotal: ₹' + total);
+}
+
+</script></body>
+</html>
